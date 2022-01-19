@@ -19,48 +19,48 @@ export class GildedRoseStore {
   }
 
   updateAllCommoditiesPerDay() {
-    for (const item of this._commodities) {
-      // item that quality decrease as sellIn increase
-      if (item.name !== COMMODITY_TYPE.AGED_BRIE && item.name !== COMMODITY_TYPE.BACKSTAGE_PASS) {
-        if (item.quality > QUALITY_LIMIT.MIN) {
-          if (item.name !== COMMODITY_TYPE.SULFURAS) {
-            item.quality = item.quality - 1
+    for (const commodity of this._commodities) {
+      // commodity that quality decrease as sellIn increase
+      if (commodity.name !== COMMODITY_TYPE.AGED_BRIE && commodity.name !== COMMODITY_TYPE.BACKSTAGE_PASS) {
+        if (commodity.quality > QUALITY_LIMIT.MIN) {
+          if (commodity.name !== COMMODITY_TYPE.SULFURAS) {
+            commodity.quality = commodity.quality - 1
           }
         }
       } else {
-        if (item.quality < QUALITY_LIMIT.MAX) {
-          item.quality = item.quality + 1
-          if (item.name === COMMODITY_TYPE.BACKSTAGE_PASS) {
-            if (item.sellIn < 11) {
-              if (item.quality < QUALITY_LIMIT.MAX) {
-                item.quality = item.quality + 1
+        if (commodity.quality < QUALITY_LIMIT.MAX) {
+          commodity.quality = commodity.quality + 1
+          if (commodity.name === COMMODITY_TYPE.BACKSTAGE_PASS) {
+            if (commodity.sellIn < 11) {
+              if (commodity.quality < QUALITY_LIMIT.MAX) {
+                commodity.quality = commodity.quality + 1
               }
             }
-            if (item.sellIn < 6) {
-              if (item.quality < QUALITY_LIMIT.MAX) {
-                item.quality = item.quality + 1
+            if (commodity.sellIn < 6) {
+              if (commodity.quality < QUALITY_LIMIT.MAX) {
+                commodity.quality = commodity.quality + 1
               }
             }
           }
         }
       }
-      if (item.name !== COMMODITY_TYPE.SULFURAS) {
-        item.sellIn = item.sellIn - 1
+      if (commodity.name !== COMMODITY_TYPE.SULFURAS) {
+        commodity.sellIn = commodity.sellIn - 1
       }
-      if (item.sellIn < QUALITY_LIMIT.MIN) {
-        if (item.name !== COMMODITY_TYPE.AGED_BRIE) {
-          if (item.name !== COMMODITY_TYPE.BACKSTAGE_PASS) {
-            if (item.quality > QUALITY_LIMIT.MIN) {
-              if (item.name !== COMMODITY_TYPE.SULFURAS) {
-                item.quality = item.quality - 1
+      if (commodity.sellIn < QUALITY_LIMIT.MIN) {
+        if (commodity.name !== COMMODITY_TYPE.AGED_BRIE) {
+          if (commodity.name !== COMMODITY_TYPE.BACKSTAGE_PASS) {
+            if (commodity.quality > QUALITY_LIMIT.MIN) {
+              if (commodity.name !== COMMODITY_TYPE.SULFURAS) {
+                commodity.quality = commodity.quality - 1
               }
             }
           } else {
-            item.quality = item.quality - item.quality
+            commodity.quality = commodity.quality - commodity.quality
           }
         } else {
-          if (item.quality < QUALITY_LIMIT.MAX) {
-            item.quality = item.quality + 1
+          if (commodity.quality < QUALITY_LIMIT.MAX) {
+            commodity.quality = commodity.quality + 1
           }
         }
       }

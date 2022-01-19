@@ -1,9 +1,9 @@
-import { AgedBrie } from "./agedbrie"
-import { BackstagePass } from "./backstagePasses"
-import { Commodity } from "./commodity"
-import { Conjured } from "./conjured"
+import { AgedBrie } from "./commodity/agedbrie"
+import { BackstagePass } from "./commodity/backstagePasses"
+import { Commodity } from "./commodity/commodity"
+import { Conjured } from "./commodity/conjured"
+import { Sulfuras } from "./commodity/sulfuras"
 import { GildedRoseStore } from "./gilded-rose"
-import { Sulfuras } from "./sulfuras"
 
 describe("GildedRoseStore", () => {
   it("should behave all good after 5 days in new mode", () => {

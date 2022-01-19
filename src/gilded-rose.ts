@@ -1,16 +1,4 @@
-import { Commodity } from "./commodity"
-
-export enum COMMODITY_TYPE {
-  BACKSTAGE_PASS = "Backstage passes",
-  SULFURAS = "Sulfuras",
-  AGED_BRIE = "Aged Brie",
-  CONJURED = "Conjured"
-}
-
-export enum QUALITY_LIMIT {
-  MAX = 50,
-  MIN = 0
-}
+import { Commodity } from "./commodity/commodity"
 
 export class GildedRoseStore {
   private _commodities: Commodity[]

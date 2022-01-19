@@ -6,7 +6,7 @@ describe("GildedRoseTest", () => {
     const items = [new Item("foo", 1, 5)]
 
     const app = new GildedRoseStore(items)
-    app.update_quality()
+    app.updateAllItemsPerDay()
 
     expect(app.items[0].name).toEqual("foo")
     expect(app.items[0].quality).toEqual(4)

@@ -27,7 +27,7 @@ for (let i = 0; i < days; i++) {
     result.push(item.toString())
   }
   result.push("")
-  app.update_quality()
+  app.updateAllItemsPerDay()
 }
 
 console.log(result.join("\n"))

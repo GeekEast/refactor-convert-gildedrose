@@ -1,18 +1,7 @@
 import { Commodity } from "./commodity"
-import { COMMODITY_TYPE, GildedRoseStore } from "./gilded-rose"
+import { GildedRoseStore } from "./gilded-rose"
 
 describe("GildedRoseStore", () => {
-  // rough test
-  it("Aged Brie quality will increase, sellIn will decrease after one day", () => {
-    const agedBrie = new Commodity({ name: COMMODITY_TYPE.AGED_BRIE, sellIn: 1, quality: 2 })
-    const store = new GildedRoseStore([agedBrie])
-    store.updateAllCommoditiesPerDay()
-
-    expect(agedBrie.name).toEqual(COMMODITY_TYPE.AGED_BRIE)
-    expect(agedBrie.quality).toBeGreaterThan(2)
-    expect(agedBrie.sellIn).toBeLessThan(1)
-  })
-
   it("should behave all good after 5 days", () => {
     const com1 = new Commodity({ name: "+5 Dexterity Vest", sellIn: 10, quality: 20 })
     const com2 = new Commodity({ name: "Aged Brie", sellIn: 2, quality: 0 }) //
@@ -85,12 +74,14 @@ describe("GildedRoseStore", () => {
     ]
 
     const daysData = [day1Data, day2Data, day3Data, day4Data, day5Data]
-    daysData.forEach((dayData) => {
+    daysData.forEach((dayData, dayIdx) => {
       store.updateAllCommoditiesPerDay()
-      dayData.forEach((data) => {
+      dayData.forEach((data, commodityIdx) => {
         const commodity = data[0] as Commodity
         const expectedSellIn = data[1]
         const expectedQuality = data[2]
+        console.log(`Day ${dayIdx + 1} Commodity ${commodityIdx + 1}`)
+        console.log(commodity)
         expect(commodity.sellIn).toEqual(expectedSellIn)
         expect(commodity.quality).toEqual(expectedQuality)
       })

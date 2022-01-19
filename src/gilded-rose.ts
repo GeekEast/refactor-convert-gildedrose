@@ -20,49 +20,56 @@ export class GildedRoseStore {
 
   updateAllCommoditiesPerDay() {
     for (const commodity of this._commodities) {
-      // commodity that quality decrease as sellIn increase
-      if (commodity.name !== COMMODITY_TYPE.AGED_BRIE && commodity.name !== COMMODITY_TYPE.BACKSTAGE_PASS) {
-        if (commodity.quality > QUALITY_LIMIT.MIN) {
-          if (commodity.name !== COMMODITY_TYPE.SULFURAS) {
-            commodity.quality = commodity.quality - 1
-          }
-        }
-      } else {
-        if (commodity.quality < QUALITY_LIMIT.MAX) {
-          commodity.quality = commodity.quality + 1
-          if (commodity.name === COMMODITY_TYPE.BACKSTAGE_PASS) {
-            if (commodity.sellIn < 11) {
-              if (commodity.quality < QUALITY_LIMIT.MAX) {
-                commodity.quality = commodity.quality + 1
-              }
-            }
-            if (commodity.sellIn < 6) {
-              if (commodity.quality < QUALITY_LIMIT.MAX) {
-                commodity.quality = commodity.quality + 1
-              }
-            }
-          }
-        }
+      // sulfuras
+      if (commodity.name === COMMODITY_TYPE.SULFURAS) {
+        continue
       }
-      if (commodity.name !== COMMODITY_TYPE.SULFURAS) {
-        commodity.sellIn = commodity.sellIn - 1
+
+      // aged brie
+      if (commodity.name === COMMODITY_TYPE.AGED_BRIE) {
+        commodity.sellIn -= 1
+        const qualityDiff = commodity.sellIn < 0 ? 2 : 1
+        if (commodity.quality < 50) commodity.quality += qualityDiff
+        continue
       }
-      if (commodity.sellIn < QUALITY_LIMIT.MIN) {
-        if (commodity.name !== COMMODITY_TYPE.AGED_BRIE) {
-          if (commodity.name !== COMMODITY_TYPE.BACKSTAGE_PASS) {
-            if (commodity.quality > QUALITY_LIMIT.MIN) {
-              if (commodity.name !== COMMODITY_TYPE.SULFURAS) {
-                commodity.quality = commodity.quality - 1
-              }
+
+      // backstage pass
+      if (commodity.name === COMMODITY_TYPE.BACKSTAGE_PASS) {
+        commodity.sellIn -= 1
+        if (commodity.quality > 0 && commodity.quality < 50) {
+          if (commodity.sellIn >= 10) {
+            if (commodity.quality <= 49) commodity.quality += 1
+            continue
+          }
+
+          if (commodity.sellIn >= 5) {
+            if (commodity.quality <= 48) {
+              commodity.quality += 2
+            } else {
+              commodity.quality = 50
             }
-          } else {
-            commodity.quality = commodity.quality - commodity.quality
+            continue
           }
-        } else {
-          if (commodity.quality < QUALITY_LIMIT.MAX) {
-            commodity.quality = commodity.quality + 1
+
+          if (commodity.sellIn >= 0) {
+            if (commodity.quality <= 47) {
+              commodity.quality += 3
+            } else {
+              commodity.quality = 50
+            }
+            continue
           }
+
+          commodity.quality = 0
         }
+        continue
+      }
+
+      // other
+      commodity.sellIn -= 1
+      const qualityDiff = commodity.sellIn < 0 ? -2 : -1
+      if (commodity.quality > 0 && commodity.quality < 50) {
+        commodity.quality += qualityDiff
       }
     }
   }

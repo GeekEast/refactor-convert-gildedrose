@@ -1,11 +1,11 @@
-import { GildedRose } from "./gilded-rose"
+import { GildedRoseStore } from "./gilded-rose"
 import { Item } from "./item"
 
 describe("GildedRoseTest", () => {
   it("foo", () => {
     const items = [new Item("foo", 1, 5)]
 
-    const app = new GildedRose(items)
+    const app = new GildedRoseStore(items)
     app.update_quality()
 
     expect(app.items[0].name).toEqual("foo")

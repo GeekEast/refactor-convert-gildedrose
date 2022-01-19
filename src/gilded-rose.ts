@@ -7,7 +7,7 @@ export enum ITEM_TYPE {
   CONJURED = "Conjured"
 }
 
-export class GildedRose {
+export class GildedRoseStore {
   private _items: Item[]
   constructor(items: Item[]) {
     this._items = items
@@ -22,47 +22,47 @@ export class GildedRose {
   }
 
   update_quality() {
-    for (let i = 0; i < this.items.length; i++) {
-      if (this.items[i].name !== ITEM_TYPE.AGED_BRIE && this.items[i].name !== ITEM_TYPE.BACKSTAGE_PASS) {
-        if (this.items[i].quality > 0) {
-          if (this.items[i].name !== ITEM_TYPE.SULFURAS) {
-            this.items[i].quality = this.items[i].quality - 1
+    for (const item of this._items) {
+      if (item.name !== ITEM_TYPE.AGED_BRIE && item.name !== ITEM_TYPE.BACKSTAGE_PASS) {
+        if (item.quality > 0) {
+          if (item.name !== ITEM_TYPE.SULFURAS) {
+            item.quality = item.quality - 1
           }
         }
       } else {
-        if (this.items[i].quality < 50) {
-          this.items[i].quality = this.items[i].quality + 1
-          if (this.items[i].name === ITEM_TYPE.BACKSTAGE_PASS) {
-            if (this.items[i].sell_in < 11) {
-              if (this.items[i].quality < 50) {
-                this.items[i].quality = this.items[i].quality + 1
+        if (item.quality < 50) {
+          item.quality = item.quality + 1
+          if (item.name === ITEM_TYPE.BACKSTAGE_PASS) {
+            if (item.sell_in < 11) {
+              if (item.quality < 50) {
+                item.quality = item.quality + 1
               }
             }
-            if (this.items[i].sell_in < 6) {
-              if (this.items[i].quality < 50) {
-                this.items[i].quality = this.items[i].quality + 1
+            if (item.sell_in < 6) {
+              if (item.quality < 50) {
+                item.quality = item.quality + 1
               }
             }
           }
         }
       }
-      if (this.items[i].name !== ITEM_TYPE.SULFURAS) {
-        this.items[i].sell_in = this.items[i].sell_in - 1
+      if (item.name !== ITEM_TYPE.SULFURAS) {
+        item.sell_in = item.sell_in - 1
       }
-      if (this.items[i].sell_in < 0) {
-        if (this.items[i].name !== ITEM_TYPE.AGED_BRIE) {
-          if (this.items[i].name !== ITEM_TYPE.BACKSTAGE_PASS) {
-            if (this.items[i].quality > 0) {
-              if (this.items[i].name !== ITEM_TYPE.SULFURAS) {
-                this.items[i].quality = this.items[i].quality - 1
+      if (item.sell_in < 0) {
+        if (item.name !== ITEM_TYPE.AGED_BRIE) {
+          if (item.name !== ITEM_TYPE.BACKSTAGE_PASS) {
+            if (item.quality > 0) {
+              if (item.name !== ITEM_TYPE.SULFURAS) {
+                item.quality = item.quality - 1
               }
             }
           } else {
-            this.items[i].quality = this.items[i].quality - this.items[i].quality
+            item.quality = item.quality - item.quality
           }
         } else {
-          if (this.items[i].quality < 50) {
-            this.items[i].quality = this.items[i].quality + 1
+          if (item.quality < 50) {
+            item.quality = item.quality + 1
           }
         }
       }

@@ -1,4 +1,4 @@
-import { GildedRose } from "./gilded-rose"
+import { GildedRoseStore } from "./gilded-rose"
 import { Item } from "./item"
 
 const items = [
@@ -15,7 +15,7 @@ const items = [
   new Item("Conjured Mana Cake", 3, 6)
 ]
 
-const app = new GildedRose(items)
+const app = new GildedRoseStore(items)
 const days = 3
 const result = []
 

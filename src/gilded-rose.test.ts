@@ -1,18 +1,22 @@
+import { AgedBrie } from "./agedbrie"
+import { BackstagePass } from "./backstagePasses"
 import { Commodity } from "./commodity"
+import { Conjured } from "./conjured"
 import { GildedRoseStore } from "./gilded-rose"
+import { Sulfuras } from "./sulfuras"
 
 describe("GildedRoseStore", () => {
-  it("should behave all good after 5 days", () => {
+  it("should behave all good after 5 days in new mode", () => {
     const com1 = new Commodity({ name: "+5 Dexterity Vest", sellIn: 10, quality: 20 })
-    const com2 = new Commodity({ name: "Aged Brie", sellIn: 2, quality: 0 }) //
-    const com3 = new Commodity({ name: "Elixir of the Mongoose", sellIn: 5, quality: 7 }) //
-    const com4 = new Commodity({ name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80 }) //
-    const com5 = new Commodity({ name: "Sulfuras, Hand of Ragnaros", sellIn: -1, quality: 80 })
-    const com6 = new Commodity({ name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 15, quality: 20 })
-    const com7 = new Commodity({ name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 10, quality: 49 })
-    const com8 = new Commodity({ name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 5, quality: 49 })
-    const com9 = new Commodity({ name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 1, quality: 20 })
-    const com10 = new Commodity({ name: "Conjured Mana Cake", sellIn: 3, quality: 6 })
+    const com2 = new AgedBrie({ name: "Aged Brie", sellIn: 2, quality: 0 })
+    const com3 = new Commodity({ name: "Elixir of the Mongoose", sellIn: 5, quality: 7 })
+    const com4 = new Sulfuras({ name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80 })
+    const com5 = new Sulfuras({ name: "Sulfuras, Hand of Ragnaros", sellIn: -1, quality: 80 })
+    const com6 = new BackstagePass({ name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 15, quality: 20 })
+    const com7 = new BackstagePass({ name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 10, quality: 49 })
+    const com8 = new BackstagePass({ name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 5, quality: 49 })
+    const com9 = new BackstagePass({ name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 1, quality: 20 })
+    const com10 = new Conjured({ name: "Conjured Mana Cake", sellIn: 3, quality: 6 })
 
     const commodities = [com1, com2, com3, com4, com5, com6, com7, com8, com9, com10]
     const store = new GildedRoseStore(commodities)

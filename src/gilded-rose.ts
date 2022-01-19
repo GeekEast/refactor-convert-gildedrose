@@ -1,6 +1,6 @@
-import { Item } from "./item"
+import { Commodity } from "./commodity"
 
-export enum ITEM_TYPE {
+export enum COMMODITY_TYPE {
   BACKSTAGE_PASS = "Backstage passes to a TAFKAL80ETC concert",
   SULFURAS = "Sulfuras, Hand of Ragnaros",
   AGED_BRIE = "Aged Brie",
@@ -13,38 +13,38 @@ export enum QUALITY_LIMIT {
 }
 
 export class GildedRoseStore {
-  private _items: Item[]
-  constructor(items: Item[]) {
-    this._items = items
+  private _commodities: Commodity[]
+  constructor(commodities: Commodity[]) {
+    this._commodities = commodities
   }
 
-  public get items(): Item[] {
-    return this._items
+  public get commodities(): Commodity[] {
+    return this._commodities
   }
 
-  public set items(items: Item[]) {
-    this._items = items
+  public set commodities(commodities: Commodity[]) {
+    this._commodities = commodities
   }
 
-  updateAllItemsPerDay() {
-    for (const item of this._items) {
+  updateAllCommoditiesPerDay() {
+    for (const item of this._commodities) {
       // item that quality decrease as sellIn increase
-      if (item.name !== ITEM_TYPE.AGED_BRIE && item.name !== ITEM_TYPE.BACKSTAGE_PASS) {
+      if (item.name !== COMMODITY_TYPE.AGED_BRIE && item.name !== COMMODITY_TYPE.BACKSTAGE_PASS) {
         if (item.quality > QUALITY_LIMIT.MIN) {
-          if (item.name !== ITEM_TYPE.SULFURAS) {
+          if (item.name !== COMMODITY_TYPE.SULFURAS) {
             item.quality = item.quality - 1
           }
         }
       } else {
         if (item.quality < QUALITY_LIMIT.MAX) {
           item.quality = item.quality + 1
-          if (item.name === ITEM_TYPE.BACKSTAGE_PASS) {
-            if (item.sell_in < 11) {
+          if (item.name === COMMODITY_TYPE.BACKSTAGE_PASS) {
+            if (item.sellIn < 11) {
               if (item.quality < QUALITY_LIMIT.MAX) {
                 item.quality = item.quality + 1
               }
             }
-            if (item.sell_in < 6) {
+            if (item.sellIn < 6) {
               if (item.quality < QUALITY_LIMIT.MAX) {
                 item.quality = item.quality + 1
               }
@@ -52,14 +52,14 @@ export class GildedRoseStore {
           }
         }
       }
-      if (item.name !== ITEM_TYPE.SULFURAS) {
-        item.sell_in = item.sell_in - 1
+      if (item.name !== COMMODITY_TYPE.SULFURAS) {
+        item.sellIn = item.sellIn - 1
       }
-      if (item.sell_in < QUALITY_LIMIT.MIN) {
-        if (item.name !== ITEM_TYPE.AGED_BRIE) {
-          if (item.name !== ITEM_TYPE.BACKSTAGE_PASS) {
+      if (item.sellIn < QUALITY_LIMIT.MIN) {
+        if (item.name !== COMMODITY_TYPE.AGED_BRIE) {
+          if (item.name !== COMMODITY_TYPE.BACKSTAGE_PASS) {
             if (item.quality > QUALITY_LIMIT.MIN) {
-              if (item.name !== ITEM_TYPE.SULFURAS) {
+              if (item.name !== COMMODITY_TYPE.SULFURAS) {
                 item.quality = item.quality - 1
               }
             }

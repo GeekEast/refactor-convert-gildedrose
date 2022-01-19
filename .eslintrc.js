@@ -14,7 +14,7 @@ module.exports = {
     $: true
   },
   rules: {
-    "no-console": "warn",
+    "no-console": "off",
     eqeqeq: ["warn", "always"],
     "no-empty-function": "off",
     "@typescript-eslint/no-empty-function": ["warn"],

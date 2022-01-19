@@ -26,7 +26,8 @@ describe("GildedRoseStore", () => {
       [com6, 14, 21],
       [com7, 9, 50],
       [com8, 4, 50],
-      [com9, 0, 23]
+      [com9, 0, 23],
+      [com10, 2, 4]
     ]
     const day2Data = [
       [com1, 8, 18],
@@ -37,7 +38,8 @@ describe("GildedRoseStore", () => {
       [com6, 13, 22],
       [com7, 8, 50],
       [com8, 3, 50],
-      [com9, -1, 0]
+      [com9, -1, 0],
+      [com10, 1, 2]
     ]
     const day3Data = [
       [com1, 7, 17],
@@ -48,7 +50,8 @@ describe("GildedRoseStore", () => {
       [com6, 12, 23],
       [com7, 7, 50],
       [com8, 2, 50],
-      [com9, -2, 0]
+      [com9, -2, 0],
+      [com10, 0, 0]
     ]
     const day4Data = [
       [com1, 6, 16],
@@ -59,7 +62,8 @@ describe("GildedRoseStore", () => {
       [com6, 11, 24],
       [com7, 6, 50],
       [com8, 1, 50],
-      [com9, -3, 0]
+      [com9, -3, 0],
+      [com10, -1, 0]
     ]
     const day5Data = [
       [com1, 5, 15],
@@ -70,7 +74,8 @@ describe("GildedRoseStore", () => {
       [com6, 10, 25],
       [com7, 5, 50],
       [com8, 0, 50],
-      [com9, -4, 0]
+      [com9, -4, 0],
+      [com10, -2, 0]
     ]
 
     const daysData = [day1Data, day2Data, day3Data, day4Data, day5Data]

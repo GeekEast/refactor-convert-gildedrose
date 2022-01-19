@@ -14,9 +14,9 @@ export class Commodity {
     return this._name
   }
 
-  set name(val: string) {
-    this._name = val
-  }
+  // set name(val: string) {
+  //   this._name = val
+  // }
 
   get sellIn() {
     return this._sellIn
@@ -35,7 +35,7 @@ export class Commodity {
   }
 
   // * ======================= other methods ========================
-  toString() {
-    return `${this.name}, SellIn: ${this.sellIn}, Quality ${this.quality}`
-  }
+  // toString() {
+  //   return `${this.name}, SellIn: ${this.sellIn}, Quality ${this.quality}`
+  // }
 }

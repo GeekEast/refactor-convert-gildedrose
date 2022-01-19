@@ -18,14 +18,6 @@ export class GildedRoseStore {
     this._commodities = commodities
   }
 
-  public get commodities(): Commodity[] {
-    return this._commodities
-  }
-
-  public set commodities(commodities: Commodity[]) {
-    this._commodities = commodities
-  }
-
   updateAllCommoditiesPerDay() {
     for (const item of this._commodities) {
       // item that quality decrease as sellIn increase

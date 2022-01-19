@@ -13,7 +13,7 @@ describe("GildedRoseStore", () => {
     expect(agedBrie.sellIn).toBeLessThan(1)
   })
 
-  it("should behave correctly after 4 days", () => {
+  it("should behave all good after 5 days", () => {
     const com1 = new Commodity({ name: "+5 Dexterity Vest", sellIn: 10, quality: 20 })
     const com2 = new Commodity({ name: "Aged Brie", sellIn: 2, quality: 0 }) //
     const com3 = new Commodity({ name: "Elixir of the Mongoose", sellIn: 5, quality: 7 }) //

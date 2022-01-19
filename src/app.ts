@@ -30,4 +30,4 @@ for (let i = 0; i < days; i++) {
   app.update_quality()
 }
 
-// console.log(result.join("\n"))
+console.log(result.join("\n"))

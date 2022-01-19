@@ -6,8 +6,8 @@
   "scripts": {
     "start": "ts-node src/index.ts",
     "build": "rimraf dist && tsc -p tsconfig.json && zip -q -r deployment_package.zip node_modules dist",
-    "tdd": "jest --coverage --watchAll --verbose",
-    "test": "jest --coverage --verbose",
+    "tdd": "jest --coverage --watchAll --verbose --no-cache",
+    "test": "jest --coverage --verbose --no-cache",
     "fmt": "yarn lint:fix \"./**/*.{ts,js}\" && yarn prettier:fix \"./**/*.{ts,js}\"",
     "lint:fix": "eslint --fix",
     "prettier:fix": "prettier --write --config .prettierrc.js"
